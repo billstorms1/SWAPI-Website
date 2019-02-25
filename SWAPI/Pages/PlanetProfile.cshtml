@@ -1,0 +1,38 @@
+﻿@page "{url}"
+@model SWAPI.Pages.PlanetProfileModel
+@{
+    ViewData["Title"] = "PlanetProfile";
+}
+
+<h1>Planet Profile</h1>
+<ul id="character-profile">
+    <li>Name : @Model.Profile.Name
+    <li>Rotation Period : @Model.Profile.RotationPeriod
+    <li>Orbital Period : @Model.Profile.OrbitalPeriod
+    <li>Diameter : @Model.Profile.Diameter
+    <li>Climate : @Model.Profile.Climate
+    <li>Gravity : @Model.Profile.Gravity
+    <li>Terrain : @Model.Profile.Terrain
+    <li>Surface Water : @Model.Profile.SurfaceWater
+    <li>Population : @Model.Profile.Population
+    <li>
+        <ol>
+            Residents :
+            @foreach (var resident in Model.Profile.Residents)
+            {
+                <li>@resident</li>
+            }
+        </ol>
+    </li>
+    <li>
+        <ol>
+            Films :
+            @foreach (var film in Model.Profile.Films)
+            {
+                <li>
+                    @film
+                </li>
+            }
+        </ol>
+    </li>
+</ul>

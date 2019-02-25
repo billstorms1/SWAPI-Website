@@ -1,0 +1,14 @@
+﻿@page
+@using System.Web
+@model StarShipsModel
+@{
+    ViewData["Title"] = "StarShips";
+}
+
+<h1>StarShips</h1>
+
+
+@foreach (var ship in Model.StarShips)
+{
+    <a class="name" href="@Url.Page("StarShipProfile", new {url = HttpUtility.UrlDecode(ship.Url.AbsoluteUri)})">@ship.Name</a>
+}

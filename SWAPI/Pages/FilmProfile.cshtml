@@ -1,0 +1,57 @@
+﻿@page "{url}"
+@model SWAPI.Pages.FilmProfileModel
+@{
+    ViewData["Title"] = "FilmProfile";
+}
+
+<h1>Film Profile</h1>
+<ul id="character-profile">
+    <li>Title : @Model.Profile.Title
+    <li>Episode Number : @Model.Profile.EpisodeId
+    <li>Opening Crawl : @Model.Profile.OpeningCrawl
+    <li>Director : @Model.Profile.Director
+    <li>Producer : @Model.Profile.Producer
+    <li>Release Date : @Model.Profile.ReleaseDate
+    <li>
+        <ol>
+            Characters :
+            @foreach (var character in Model.Profile.Characters)
+            {
+                <li>@character</li>
+            }
+        </ol>
+    </li>
+    <li>
+        <ol>
+            Planets :
+            @foreach (var planet in Model.Profile.Planets)
+            {
+                <li>
+                    @planet
+                </li>
+            }
+        </ol>
+    </li>
+    <li>
+        <ol>
+            Star Ships :
+            @foreach (var starship in Model.Profile.StarShips)
+            {
+                <li>
+                    @starship
+                </li>
+            }
+        </ol>
+    </li>
+    <li>
+        <ol>
+            Vehicles :
+            @foreach (var vehicle in Model.Profile.Vehicles)
+            {
+                <li>
+                    @vehicle
+                </li>
+            }
+        </ol>
+    </li>
+</ul>

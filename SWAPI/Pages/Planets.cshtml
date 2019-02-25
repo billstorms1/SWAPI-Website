@@ -1,0 +1,15 @@
+﻿@page
+@using System.Web
+@using SWAPI.Models
+@model PlanetsModel
+@{
+    ViewData["Title"] = "Planets";
+}
+
+<h1>Planets</h1>
+
+
+@foreach (var planet in Model.Planets)
+{
+<a class="name" href="@Url.Page("PlanetProfile", new { url = HttpUtility.UrlDecode(planet.Url.AbsoluteUri) } )">@planet.Name</a>
+}

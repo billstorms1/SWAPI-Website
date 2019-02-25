@@ -1,0 +1,41 @@
+﻿@page "{url}"
+@model SWAPI.Pages.VehicleProfileModel
+@{
+    ViewData["Title"] = "VehicleProfile";
+}
+
+<h1>VehicleProfile</h1>
+
+<ul id="character-profile">
+    <li>Name : @Model.Profile.Name
+    <li>Model : @Model.Profile.Model
+    <li>Manufacturer : @Model.Profile.Manufacturer
+    <li>Cost In Credits : @Model.Profile.CostInCredits
+    <li>Length : @Model.Profile.Length
+    <li>Max Atmosphering Speed : @Model.Profile.MaxAtmospheringSpeed
+    <li>Crew : @Model.Profile.Crew
+    <li>Passengers : @Model.Profile.Passengers
+    <li>CargoCapacity : @Model.Profile.CargoCapacity
+    <li>Consumables : @Model.Profile.Consumables
+    <li>
+        <ol>
+            Pilots :
+            @foreach (var pilot in Model.Profile.Pilots)
+            {
+                <li>
+                    @pilot
+                </li>
+            }
+        </ol>
+
+    </li>
+    <li>
+        <ol>
+            Films :
+            @foreach (var film in Model.Profile.Films)
+            {
+                <li>@film</li>
+            }
+        </ol>
+    </li>
+</ul>

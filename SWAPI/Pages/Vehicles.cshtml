@@ -1,0 +1,14 @@
+﻿@page
+@using System.Web
+@model VehiclesModel
+@{
+    ViewData["Title"] = "Vehicles";
+}
+
+<h1>Vehicles</h1>
+
+
+@foreach (var vehicle in Model.Vehicles)
+{
+    <a class="name" href="@Url.Page("VehicleProfile", new {url = HttpUtility.UrlDecode(vehicle.Url.AbsoluteUri)})">@vehicle.Name</a>
+}

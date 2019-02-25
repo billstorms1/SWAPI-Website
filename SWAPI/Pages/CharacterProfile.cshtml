@@ -1,0 +1,51 @@
+﻿@page "{url}"
+@model CharacterProfileModel
+@{
+    ViewData["Title"] = "CharacterProfile";
+}
+
+<h1>Character Profile</h1>
+
+<ul id="character-profile">
+    <li>Name : @Model.Profile.Name
+    <li>Height : @Model.Profile.Height
+    <li>Mass : @Model.Profile.Mass
+    <li>Hair Color : @Model.Profile.HairColor
+    <li>Skin Color : @Model.Profile.SkinColor
+    <li>Eye Color : @Model.Profile.EyeColor
+    <li>Birth Year : @Model.Profile.BirthYear
+    <li>Gender : @Model.Profile.Gender
+    <li>Home World : @Model.Profile.HomeWorld
+    <li>
+        <ol>
+            Films :
+            @foreach (var film in Model.Profile.Films)
+            {
+                <li>
+                    @film
+                </li>
+            }
+        </ol>
+
+    </li>
+    <li>Species : @Model.Profile.Species
+
+    <li>
+        <ol>
+            Vehicles :
+            @foreach (var vehicle in Model.Profile.Vehicles)
+            {
+                <li>@vehicle</li>
+            }
+        </ol>
+    </li>
+    <li>
+        <ol>
+            Star Ships :
+            @foreach (var ship in Model.Profile.StarShips)
+            {
+                <li>@ship</li>
+            }
+        </ol>
+    </li>
+</ul>

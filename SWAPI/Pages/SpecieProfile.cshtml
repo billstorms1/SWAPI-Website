@@ -1,0 +1,41 @@
+﻿@page "{url}"
+@model SWAPI.Pages.SpecieProfileModel
+@{
+    ViewData["Title"] = "SpecieProfile";
+}
+
+<h1>Specie Profile</h1>
+
+<ul id="character-profile">
+    <li>Name : @Model.Profile.Name
+    <li>Classification : @Model.Profile.Classification
+    <li>Designation : @Model.Profile.Designation
+    <li>Average Height : @Model.Profile.AverageHeight
+    <li>Skin Colors : @Model.Profile.SkinColors
+    <li>Hair Colors : @Model.Profile.HairColors
+    <li>Eye Colors : @Model.Profile.EyeColors
+    <li>Average Life Span : @Model.Profile.AverageLifeSpan
+    <li>Home World : @Model.Profile.HomeWorld
+    <li>Language : @Model.Profile.Language
+    <li>
+        <ol>
+            People :
+            @foreach (var character in Model.Profile.People)
+            {
+                <li>@character</li>
+            }
+        </ol>
+    </li>
+    <li>
+        <ol>
+            Films :
+            @foreach (var film in Model.Profile.Films)
+            {
+                <li>
+                    @film
+                </li>
+            }
+        </ol>
+
+    </li>
+</ul>

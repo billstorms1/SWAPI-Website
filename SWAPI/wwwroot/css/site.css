@@ -1,0 +1,132 @@
+﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
+for details on configuring this project to bundle and minify static web assets. */
+
+.site-title {
+    font-weight: bold;
+    font-size: 3.5rem;
+}
+
+a.navbar-brand {
+  white-space: normal;
+  text-align: center;
+  word-break: break-all;
+}
+
+
+.navbar-container
+{
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.navbar-container ul li{
+    text-align: center;
+
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  font-size: 14px;
+}
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+.border-top {
+  border-top: 1px solid #e5e5e5;
+}
+.border-bottom {
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.box-shadow {
+  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+}
+
+button.accept-policy {
+  font-size: 1rem;
+  line-height: inherit;
+}
+
+/* Sticky footer styles
+-------------------------------------------------- */
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+    /* Margin bottom by footer height */
+    margin-bottom: 60px;
+    background-color: black;
+}
+
+.footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  white-space: nowrap;
+  /* Set the fixed height of the footer here */
+  height: 60px;
+  line-height: 60px; /* Vertically center the text there */
+}
+
+.pb-3 {
+    text-align: center;
+    width: 100%;
+    background-color: lightgrey;
+    border: 5px solid black;
+    border-radius: 8px;
+}
+
+.name {
+    font-size: 18px;
+    font-weight: bold;
+    display: inline-block;
+    width:200px;
+    margin: 20px;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    background-color: azure;
+}
+
+    .name:hover {
+        text-decoration: none;
+    }
+
+form button {
+    background: transparent;
+    border: none;
+}
+
+ #character-profile {
+    list-style: none;
+    font-weight: bold;
+    display: inline-block;
+    width: 300px;
+    margin: 20px;
+    border: 3px solid black;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: left;
+    background-color: azure;
+}
+
+#character-profile li {
+   font-size: 18px;
+ list-style: none;
+}
+
+
+    #character-profile li ol li{
+        font-size: 14px;
+        padding-left: 10px;
+        list-style: none;
+    }
