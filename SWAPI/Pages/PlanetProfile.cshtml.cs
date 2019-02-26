@@ -1,27 +1,23 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using System.Web;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using SWAPI.Helpers;
 using SWAPI.Models;
+using System;
+using System.Web;
 
 namespace SWAPI.Pages
 {
     public class PlanetProfileModel : CommonModel
     {
         public IMakeRequest MakeRequest;
+        public IGetNames GetNames;
         public JObject Result;
         public PlanetModel Profile;
         
 
-        public PlanetProfileModel(IMakeRequest makeRequest)
+        public PlanetProfileModel(IMakeRequest makeRequest, IGetNames getNames)
         {
             MakeRequest = makeRequest;
-            Topic = "planets";
+            GetNames = getNames;
         }
         public void OnGet(string url)
         {
@@ -32,7 +28,7 @@ namespace SWAPI.Pages
 
         public PlanetModel BuildProfile(JObject result)
         {
-            Profile =  new PlanetModel 
+            Profile = new PlanetModel
             {
                 Name = result.SelectToken("name").ToString(),
                 RotationPeriod = result.SelectToken("rotation_period").ToString(),
@@ -41,31 +37,14 @@ namespace SWAPI.Pages
                 Climate = result.SelectToken("climate").ToString(),
                 Gravity = result.SelectToken("gravity").ToString(),
                 Terrain = result.SelectToken("terrain").ToString(),
-                Films = GetNames("films"),
+                Films = GetNames.Get("films", result),
                 SurfaceWater = result.SelectToken("surface_water").ToString(),
                 Population = result.SelectToken("population").ToString(),
-                Residents = GetNames("residents"),
+                Residents = GetNames.Get("residents", result),
                 Url = result.SelectToken("url").ToObject<Uri>()
             };
 
             return Profile;
-        }
-
-        public List<string> GetNames(string item)
-        {
-            var items = new List<string>();
-            foreach (var result in Result.SelectToken(item))
-            {
-                var link = result.ToString();
-                var itemResult = MakeRequest.GetSpecificData(link);
-               
-                if(item == "films") //Stupid change in convention in the API
-                    items.Add(itemResult.SelectToken("title").ToString());
-                else
-                    items.Add(itemResult.SelectToken("name").ToString());
-            }
-            
-            return items;
         }
     }
 }

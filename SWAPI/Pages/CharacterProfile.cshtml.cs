@@ -11,12 +11,14 @@ namespace SWAPI.Pages
     public class CharacterProfileModel : CommonModel
     {
         public IMakeRequest MakeRequest;
+        public IGetNames GetNames;
         public JObject Result;
         public CharacterModel Profile;
 
-        public CharacterProfileModel(IMakeRequest makeRequest)
+        public CharacterProfileModel(IMakeRequest makeRequest, IGetNames getNames)
         {
             MakeRequest = makeRequest;
+            GetNames = getNames;
         }
 
         public void OnGet(string url)
@@ -37,31 +39,14 @@ namespace SWAPI.Pages
                 BirthYear = result.SelectToken("birth_year").ToString(),
                 EyeColor = result.SelectToken("eye_color").ToString(),
                 SkinColor = result.SelectToken("skin_color").ToString(),
-                Films =GetNames("films"),
-                Species = GetNames("species").FirstOrDefault(),
+                Films =GetNames.Get("films", result),
+                Species = GetNames.Get("species", result).FirstOrDefault(),
                 HairColor = result.SelectToken("hair_color").ToString(),
                 HomeWorld = MakeRequest.GetSpecificData(result.SelectToken("homeworld").ToString()).SelectToken("name").ToString(),
-                Vehicles = GetNames("vehicles"),
-                StarShips = GetNames("starships"),
+                Vehicles = GetNames.Get("vehicles", result),
+                StarShips = GetNames.Get("starships", result),
                 Url = result.SelectToken("url").ToObject<Uri>()
             };
-        }
-
-        public List<string> GetNames(string item)
-        {
-            var items = new List<string>();
-            foreach (var result in Result.SelectToken(item))
-            {
-                var link = result.ToString();
-                var itemResult = MakeRequest.GetSpecificData(link);
-               
-                if(item == "films") //Stupid change in convention in the API
-                    items.Add(itemResult.SelectToken("title").ToString());
-                else
-                    items.Add(itemResult.SelectToken("name").ToString());
-            }
-            
-            return items;
         }
     }
 }

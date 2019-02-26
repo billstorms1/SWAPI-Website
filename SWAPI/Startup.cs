@@ -31,6 +31,7 @@ namespace SWAPI
             services.AddSingleton<IMakeRequest, MakeRequest>();
             services.AddSingleton<IProcessRequest, ProcessRequest>();
             services.AddSingleton<IRequestHandler, RequestHandler>();
+            services.AddSingleton<IGetNames, GetNames>();
             services.AddMemoryCache();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
         }

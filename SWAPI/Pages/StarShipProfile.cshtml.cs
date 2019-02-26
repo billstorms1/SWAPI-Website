@@ -10,12 +10,14 @@ namespace SWAPI.Pages
     public class StarShipProfileModel : CommonModel
     {
         public IMakeRequest MakeRequest;
+        public IGetNames GetNames;
         public JObject Result;
         public StarShipModel Profile;
 
-        public StarShipProfileModel(IMakeRequest makeRequest)
+        public StarShipProfileModel(IMakeRequest makeRequest, IGetNames getNames)
         {
             MakeRequest = makeRequest;
+            GetNames = getNames;
         }
 
         public void OnGet(string url)
@@ -42,27 +44,10 @@ namespace SWAPI.Pages
                 HyperdriveRating = result.SelectToken("hyperdrive_rating").ToString(),
                 Mglt = result.SelectToken("MGLT").ToString(),
                 StarShipClass = result.SelectToken("starship_class").ToString(),
-                Pilots = GetNames("pilots"),
-                Films = GetNames("films"),
+                Pilots = GetNames.Get("pilots", result),
+                Films = GetNames.Get("films", result),
                 Url = result.SelectToken("url").ToObject<Uri>()
             };
-        }
-
-        public List<string> GetNames(string item)
-        {
-            var items = new List<string>();
-            foreach (var result in Result.SelectToken(item))
-            {
-                var link = result.ToString();
-                var itemResult = MakeRequest.GetSpecificData(link);
-
-                if (item == "films") //Stupid change in convention in the API
-                    items.Add(itemResult.SelectToken("title").ToString());
-                else
-                    items.Add(itemResult.SelectToken("name").ToString());
-            }
-
-            return items;
         }
     }
 }

@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Web;
 using Newtonsoft.Json.Linq;
 using SWAPI.Helpers;
@@ -10,12 +9,14 @@ namespace SWAPI.Pages
     public class VehicleProfileModel : CommonModel
     {
         public IMakeRequest MakeRequest;
+        public IGetNames GetNames;
         public JObject Result;
         public VehicleModel Profile;
 
-        public VehicleProfileModel(IMakeRequest makeRequest)
+        public VehicleProfileModel(IMakeRequest makeRequest, IGetNames getNames)
         {
             MakeRequest = makeRequest;
+            GetNames = getNames;
         }
 
         public void OnGet(string url)
@@ -40,27 +41,10 @@ namespace SWAPI.Pages
                 CargoCapacity = result.SelectToken("cargo_capacity").ToString(),
                 Consumables = result.SelectToken("consumables").ToString(),
                 VehicleClass = result.SelectToken("vehicle_class").ToString(),
-                Pilots = GetNames("pilots"),
-                Films = GetNames("films"),
+                Pilots = GetNames.Get("pilots", result),
+                Films = GetNames.Get("films", result),
                 Url = result.SelectToken("url").ToObject<Uri>()
             };
-        }
-
-        public List<string> GetNames(string item)
-        {
-            var items = new List<string>();
-            foreach (var result in Result.SelectToken(item))
-            {
-                var link = result.ToString();
-                var itemResult = MakeRequest.GetSpecificData(link);
-
-                if (item == "films") //Stupid change in convention in the API
-                    items.Add(itemResult.SelectToken("title").ToString());
-                else
-                    items.Add(itemResult.SelectToken("name").ToString());
-            }
-
-            return items;
         }
     }
 }
