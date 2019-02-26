@@ -5,11 +5,12 @@
     ViewData["Title"] = "Characters";
 }
 
-<div id="primary-window">
-    <h1>Characters</h1>
+<h1>Characters</h1>
 
-    @foreach (var character in Model.Characters)
-    {
-        <a class="name" href="@Url.Page("CharacterProfile", new {url = HttpUtility.UrlDecode(character.Url.AbsoluteUri)})">@character.Name</a>
-    }
-</div>
+@foreach (var character in Model.Characters)
+{
+
+ <a class ="name"href="@Url.Page("CharacterProfile", new {url = HttpUtility.UrlDecode(character.Url.AbsoluteUri)})">@character.Name</a>
+
+
+}

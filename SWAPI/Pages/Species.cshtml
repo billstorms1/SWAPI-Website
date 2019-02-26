@@ -7,8 +7,7 @@
 
 <h1>Species</h1>
 
-
-@foreach (var specie in @Model.Species)
+@foreach (var specie in Model.Species)
 {
-<a class="name" href="@Url.Page("SpecieProfile", new { url = HttpUtility.UrlDecode(specie.Url.AbsoluteUri) } )">@specie.Name</a>
+    <a class="name" href="@Url.Page("SpecieProfile", new {url = HttpUtility.UrlDecode(specie.Url.AbsoluteUri)})">@specie.Name</a>
 }

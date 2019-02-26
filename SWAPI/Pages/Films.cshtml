@@ -7,9 +7,7 @@
 
 <h1>Films</h1>
 
-
 @foreach (var film in Model.Films)
 {
-
-    <a class ="name" href="@Url.Page("FilmProfile", new { url = HttpUtility.UrlDecode(film.Url.AbsoluteUri) } )">@film.Name</a>
+    <a class="name" href="@Url.Page("FilmProfile", new {url = HttpUtility.UrlDecode(film.Url.AbsoluteUri)})">@film.Name</a>
 }
