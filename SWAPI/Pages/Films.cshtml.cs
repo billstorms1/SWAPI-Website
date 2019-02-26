@@ -9,7 +9,7 @@ namespace SWAPI.Pages
     {
         public IMakeRequest MakeRequest;
         public IProcessRequest ProcessRequest;
-        public List<FilmModel> Films;
+        public List<NameModel> Films;
         public List<JObject> Results;
 
         public FilmsModel(IMakeRequest makeRequest, IProcessRequest processRequest)
@@ -22,7 +22,7 @@ namespace SWAPI.Pages
         {
             Topic = "films";
             Results = MakeRequest.GetGeneralData(Topic);
-            Films = ProcessRequest.CreateFilmsList(Results);
+            Films = ProcessRequest.CreateTitleList(Results);
         }
     }
 }

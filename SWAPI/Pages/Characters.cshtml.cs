@@ -2,7 +2,6 @@
 using SWAPI.Helpers;
 using SWAPI.Models;
 using System.Collections.Generic;
-using Microsoft.AspNetCore.Mvc;
 
 namespace SWAPI.Pages
 {
@@ -11,7 +10,7 @@ namespace SWAPI.Pages
         public IMakeRequest MakeRequest;
         public IProcessRequest ProcessRequest;
         public List<JObject> Results;
-        public List<CharacterModel> Characters;
+        public List<NameModel> Characters;
         
         public CharactersModel(IMakeRequest makeRequest, IProcessRequest processRequest)
         {
@@ -23,7 +22,7 @@ namespace SWAPI.Pages
         {
             Topic = "people";
             Results = MakeRequest.GetGeneralData(Topic);
-            Characters = ProcessRequest.CreateCharacterList(Results);
+            Characters = ProcessRequest.CreateNameList(Results);
         }
     }
 }

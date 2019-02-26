@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 using SWAPI.Helpers;
 using SWAPI.Models;
 
@@ -8,7 +9,8 @@ namespace SWAPI.Pages
     {
         public IMakeRequest MakeRequest;
         public IProcessRequest ProcessRequest;
-        public List<StarShipModel> StarShips;
+        public List<JObject> Results;
+        public List<NameModel> StarShips;
 
         public StarShipsModel(IMakeRequest makeRequest, IProcessRequest processRequest)
         {
@@ -16,12 +18,11 @@ namespace SWAPI.Pages
             ProcessRequest = processRequest;
         }
 
-
         public void OnGet()
         {
             Topic = "starships";
-            var results = MakeRequest.GetGeneralData(Topic);
-            StarShips = ProcessRequest.CreateStarShipList(results);
+            Results = MakeRequest.GetGeneralData(Topic);
+            StarShips = ProcessRequest.CreateNameList(Results);
         }
     }
 }

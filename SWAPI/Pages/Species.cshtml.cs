@@ -9,8 +9,8 @@ namespace SWAPI.Pages
     {
         public IMakeRequest MakeRequest;
         public IProcessRequest ProcessRequest;
-        public List<SpecieModel> Species;
         public List<JObject> Results;
+        public List<NameModel> Species;
 
         public SpeciesModel(IMakeRequest makeRequest, IProcessRequest processRequest)
         {
@@ -22,7 +22,7 @@ namespace SWAPI.Pages
         {
             Topic = "species";
             Results = MakeRequest.GetGeneralData(Topic);
-            Species = ProcessRequest.CreateSpeciesList(Results);
+            Species = ProcessRequest.CreateNameList(Results);
         }
     }
 }

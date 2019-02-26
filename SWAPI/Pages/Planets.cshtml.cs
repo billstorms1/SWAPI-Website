@@ -10,8 +10,7 @@ namespace SWAPI.Pages
         public IMakeRequest MakeRequest;
         public IProcessRequest ProcessRequest;
         public List<JObject> Results;
-        public List<PlanetModel> Planets;
-
+        public List<NameModel> Planets;
 
         public PlanetsModel(IMakeRequest makeRequest, IProcessRequest processRequest)
         {
@@ -23,7 +22,7 @@ namespace SWAPI.Pages
         {
             Topic = "planets";
             Results = MakeRequest.GetGeneralData(Topic);
-            Planets = ProcessRequest.CreatePlanetList(Results);
+            Planets = ProcessRequest.CreateNameList(Results);
         }
     }
 }

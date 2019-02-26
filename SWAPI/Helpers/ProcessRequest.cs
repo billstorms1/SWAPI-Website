@@ -1,123 +1,47 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using Newtonsoft.Json.Linq;
 using SWAPI.Models;
-using SWAPI.Pages;
 
 namespace SWAPI.Helpers
 {
     public interface IProcessRequest
     {
-        List<CharacterModel> CreateCharacterList(List<JObject> resultBlobs);
         List<string> GetResults(List<JObject> resultBlobs, string node);
-        List<PlanetModel> CreatePlanetList(List<JObject> resultBlobs);
-        List<FilmModel> CreateFilmsList(List<JObject> results);
-        List<SpecieModel> CreateSpeciesList(List<JObject> results);
-        List<StarShipModel> CreateStarShipList(List<JObject> results);
-        List<VehicleModel> GetVehiclesList(List<JObject> results);
+        List<NameModel> CreateNameList(List<JObject> resultBlobs);
+        List<NameModel> CreateTitleList(List<JObject> resultBlobs);
     }
 
     public class ProcessRequest : IProcessRequest
     {
-        public List<CharacterModel> CreateCharacterList(List<JObject> resultBlobs)
-        {
-            var characters = new List<CharacterModel>();
+        public NameModel NameList = new NameModel();
 
+        public List<NameModel> CreateNameList(List<JObject> resultBlobs)
+        {
+            var names = new List<NameModel>();
             foreach (var blob in resultBlobs)
-                foreach (var result in blob.SelectToken("results"))
-                    characters.Add(new CharacterModel
-                    {
-                        Name = result.SelectToken("name").ToString(),
-                        Url = result.SelectToken("url").ToObject<Uri>()
-                    });
-            return characters;
+            foreach (var result in blob.SelectToken("results"))
+                names.Add(new NameModel
+                {
+                    Name = result.SelectToken("name").ToString(),
+                    Url = result.SelectToken("url").ToObject<Uri>()
+                });
+
+            return names;
         }
 
-
-        public List<PlanetModel> CreatePlanetList(List<JObject> resultBlobs)
+        public List<NameModel> CreateTitleList(List<JObject> resultBlobs)
         {
-            var planets = new List<PlanetModel>();
+            var names = new List<NameModel>();
             foreach (var blob in resultBlobs)
-            {
-                foreach (var result in blob.SelectToken("results"))
+            foreach (var result in blob.SelectToken("results"))
+                names.Add(new NameModel
                 {
-                    planets.Add(new PlanetModel
-                    {
-                        Name = result.SelectToken("name").ToString(),
-                        Url = result.SelectToken("url").ToObject<Uri>()
-                    });
-                }
-            }
-            return planets;
-        }
+                    Name = result.SelectToken("title").ToString(),
+                    Url = result.SelectToken("url").ToObject<Uri>()
+                });
 
-        public List<FilmModel> CreateFilmsList(List<JObject> resultBlobs)
-        {
-            var films = new List<FilmModel>();
-            foreach (var blob in resultBlobs)
-            {
-                foreach (var result in blob.SelectToken("results"))
-                {
-                    films.Add(new FilmModel
-                    {
-                        Title = result.SelectToken("title").ToString(),
-                        Url = result.SelectToken("url").ToObject<Uri>()
-                    });
-                }
-            }
-            return films;
-        }
-
-        public List<SpecieModel> CreateSpeciesList(List<JObject> resultBlobs)
-        {
-            var species = new List<SpecieModel>();
-            foreach (var blob in resultBlobs)
-            {
-                foreach (var result in blob.SelectToken("results"))
-                {
-                    species.Add(new SpecieModel
-                    {
-                        Name = result.SelectToken("name").ToString(),
-                        Url = result.SelectToken("url").ToObject<Uri>()
-                    });
-                }
-            }
-            return species;
-        }
-
-        public List<StarShipModel> CreateStarShipList(List<JObject> resultBlobs)
-        {
-            var starShip = new List<StarShipModel>();
-            foreach (var blob in resultBlobs)
-            {
-                foreach (var result in blob.SelectToken("results"))
-                {
-                    starShip.Add(new StarShipModel
-                    {
-                        Name = result.SelectToken("name").ToString(),
-                        Url = result.SelectToken("url").ToObject<Uri>()
-                    });
-                }
-            }
-            return starShip;
-        }
-
-        public List<VehicleModel> GetVehiclesList(List<JObject> resultBlobs)
-        {
-            var vehicle = new List<VehicleModel>();
-            foreach (var blob in resultBlobs)
-            {
-                foreach (var result in blob.SelectToken("results"))
-                {
-                    vehicle.Add(new VehicleModel
-                    {
-                        Name = result.SelectToken("name").ToString(),
-                        Url = result.SelectToken("url").ToObject<Uri>()
-                    });
-                }
-            }
-            return vehicle;
+            return names;
         }
 
         public List<string> GetResults(List<JObject> resultBlobs, string node)
@@ -131,16 +55,6 @@ namespace SWAPI.Helpers
                 }
 
             return results;
-        }
-
-        private static List<string> GetNodeValues(JObject resultBlob, string node)
-        {
-            var nodeValue = new List<string>();
-            var count = resultBlob.SelectToken("results").Count();
-            for (var i = 0; i < count; i++)
-                nodeValue.Add(resultBlob.SelectToken("results")[i].SelectToken(node).ToString());
-
-            return nodeValue;
         }
     }
 }
