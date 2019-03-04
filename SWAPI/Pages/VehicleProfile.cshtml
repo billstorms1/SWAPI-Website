@@ -6,36 +6,74 @@
 
 <h1>VehicleProfile</h1>
 
-<ul id="profile">
-    <li>Name : @Model.Profile.Name
-    <li>Model : @Model.Profile.Model
-    <li>Manufacturer : @Model.Profile.Manufacturer
-    <li>Cost In Credits : @Model.Profile.CostInCredits
-    <li>Length : @Model.Profile.Length
-    <li>Max Atmosphering Speed : @Model.Profile.MaxAtmospheringSpeed
-    <li>Crew : @Model.Profile.Crew
-    <li>Passengers : @Model.Profile.Passengers
-    <li>CargoCapacity : @Model.Profile.CargoCapacity
-    <li>Consumables : @Model.Profile.Consumables
-    <li>
-        <ol>
-            Pilots :
-            @foreach (var pilot in Model.Profile.Pilots)
-            {
-                <li>
-                    @pilot
-                </li>
-            }
-        </ol>
+<table class="table-borderless" id="profile">
+    <tr>
+        <td class="table-label">Name : </td>
+        <td class="table-data">@Model.Profile.Name</td>
+    </tr>
+    <tr>
+        <td class="table-label">Model : </td>
+        <td class="table-data">@Model.Profile.Model</td>
+    </tr>
+    <tr>
+        <td class="table-label">Manufacturer : </td>
+        <td class="table-data">@Model.Profile.Manufacturer</td>
+    </tr>
+    <tr>
+        <td class="table-label">Cost In Credits : </td>
+        <td class="table-data">@Model.Profile.CostInCredits</td>
+    </tr>
+    <tr>
+        <td class="table-label">Length : </td>
+        <td class="table-data">@Model.Profile.Length</td>
+    </tr>
+    <tr>
+        <td class="table-label">Max Atmosphering Speed : </td>
+        <td class="table-data">@Model.Profile.MaxAtmospheringSpeed</td>
+    </tr>
+    <tr>
+        <td class="table-label">Crew : </td>
+        <td class="table-data">@Model.Profile.Crew</td>
+    </tr>
+    <tr>
+        <td class="table-label">Passengers : </td>
+        <td class="table-data">@Model.Profile.Passengers</td>
+    </tr>
+    <tr>
+        <td class="table-label">CargoCapacity : </td>
+        <td class="table-data">@Model.Profile.CargoCapacity</td>
+    </tr>
+    <tr>
+        <td class="table-label">Consumables : </td>
+        <td class="table-data">@Model.Profile.Consumables</td>
+    </tr>
 
-    </li>
-    <li>
-        <ol>
-            Films :
-            @foreach (var film in Model.Profile.Films)
-            {
-                <li>@film</li>
-            }
-        </ol>
-    </li>
-</ul>
+    @if (Model.Profile.Pilots.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Pilots : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var pilot in Model.Profile.Pilots)
+                    {
+                        <li>@pilot</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.Profile.Films.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Films : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var film in Model.Profile.Films)
+                    {
+                        <li>@film</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+</table>

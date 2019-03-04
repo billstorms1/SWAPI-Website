@@ -5,34 +5,71 @@
 }
 
 <h1>Planet Profile</h1>
-<ul id="profile">
-    <li>Name : @Model.Profile.Name
-    <li>Rotation Period : @Model.Profile.RotationPeriod
-    <li>Orbital Period : @Model.Profile.OrbitalPeriod
-    <li>Diameter : @Model.Profile.Diameter
-    <li>Climate : @Model.Profile.Climate
-    <li>Gravity : @Model.Profile.Gravity
-    <li>Terrain : @Model.Profile.Terrain
-    <li>Surface Water : @Model.Profile.SurfaceWater
-    <li>Population : @Model.Profile.Population
-    <li>
-        <ol>
-            Residents :
-            @foreach (var resident in Model.Profile.Residents)
-            {
-                <li>@resident</li>
-            }
-        </ol>
-    </li>
-    <li>
-        <ol>
-            Films :
-            @foreach (var film in Model.Profile.Films)
-            {
-                <li>
-                    @film
-                </li>
-            }
-        </ol>
-    </li>
-</ul>
+
+<table class="table-borderless" id="profile">
+    <tr>
+        <td class="table-label">Name : </td>
+        <td class="table-data">@Model.Profile.Name</td>
+    </tr>
+    <tr>
+        <td class="table-label">Rotation Period : </td>
+        <td class="table-data">@Model.Profile.RotationPeriod</td>
+    </tr>
+    <tr>
+        <td class="table-label">Orbital Period  : </td>
+        <td class="table-data">@Model.Profile.OrbitalPeriod</td>
+    </tr>
+    <tr>
+        <td class="table-label">Diameter : </td>
+        <td class="table-data">@Model.Profile.Diameter</td>
+    </tr>
+    <tr>
+        <td class="table-label">Climate : </td>
+        <td class="table-data">@Model.Profile.Climate</td>
+    </tr>
+    <tr>
+        <td class="table-label">Gravity : </td>
+        <td class="table-data">@Model.Profile.Gravity</td>
+    </tr>
+    <tr>
+        <td class="table-label">Terrain : </td>
+        <td class="table-data">@Model.Profile.Terrain</td>
+    </tr>
+    <tr>
+        <td class="table-label">Surface Water : </td>
+        <td class="table-data">@Model.Profile.SurfaceWater</td>
+    </tr>
+    <tr>
+        <td class="table-label">Population : </td>
+        <td class="table-data">@Model.Profile.Population</td>
+    </tr>
+    @if (Model.Profile.Residents.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Residents : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var resident in Model.Profile.Residents)
+                    {
+                        <li>@resident</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.Profile.Films.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Films : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var film in Model.Profile.Films)
+                    {
+                        <li>@film</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+
+</table>

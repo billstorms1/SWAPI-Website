@@ -5,53 +5,88 @@
 }
 
 <h1>Film Profile</h1>
-<ul id="profile">
-    <li>Title : @Model.Profile.Title
-    <li>Episode Number : @Model.Profile.EpisodeId
-    <li>Opening Crawl : @Model.Profile.OpeningCrawl
-    <li>Director : @Model.Profile.Director
-    <li>Producer : @Model.Profile.Producer
-    <li>Release Date : @Model.Profile.ReleaseDate
-    <li>
-        <ol>
-            Characters :
-            @foreach (var character in Model.Profile.Characters)
-            {
-                <li>@character</li>
-            }
-        </ol>
-    </li>
-    <li>
-        <ol>
-            Planets :
-            @foreach (var planet in Model.Profile.Planets)
-            {
-                <li>
-                    @planet
-                </li>
-            }
-        </ol>
-    </li>
-    <li>
-        <ol>
-            Star Ships :
-            @foreach (var starship in Model.Profile.StarShips)
-            {
-                <li>
-                    @starship
-                </li>
-            }
-        </ol>
-    </li>
-    <li>
-        <ol>
-            Vehicles :
-            @foreach (var vehicle in Model.Profile.Vehicles)
-            {
-                <li>
-                    @vehicle
-                </li>
-            }
-        </ol>
-    </li>
-</ul>
+
+<table class="table-borderless" id="profile">
+    <tr>
+        <td class="table-label">Title : </td>
+        <td class="table-data">@Model.Profile.Title</td>
+    </tr>
+    <tr>
+        <td class="table-label">Episode Number : </td>
+        <td class="table-data">@Model.Profile.EpisodeId</td>
+    </tr>
+    <tr>
+        <td class="table-label">Opening Crawl : </td>
+        <td class="table-data"><div id="crawlbox">@Model.Profile.OpeningCrawl</div></td>
+    </tr>
+    <tr>
+        <td class="table-label">Director : </td>
+        <td class="table-data">@Model.Profile.Director</td>
+    </tr>
+    <tr>
+        <td class="table-label">Producer : </td>
+        <td class="table-data">@Model.Profile.Producer</td>
+    </tr>
+    <tr>
+        <td class="table-label">Release Date : </td>
+        <td class="table-data">@Model.Profile.ReleaseDate</td>
+    </tr>
+    @if (Model.Profile.Characters.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Characters : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var character in Model.Profile.Characters)
+                    {
+                        <li>@character</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    
+    @if (Model.Profile.Planets.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Planets : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var planet in Model.Profile.Planets)
+                    {
+                        <li>@planet</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+
+    @if (Model.Profile.Vehicles.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Vehicles : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var vehicle in Model.Profile.Vehicles)
+                    {
+                        <li>@vehicle</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.Profile.StarShips.Count > 0)
+    {
+        <tr>
+            <td class="table-label">StarShips : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var starShip in Model.Profile.StarShips)
+                    {
+                        <li>@starShip</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+</table>

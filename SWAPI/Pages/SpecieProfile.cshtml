@@ -6,36 +6,78 @@
 
 <h1>Specie Profile</h1>
 
-<ul id="profile">
-    <li>Name : @Model.Profile.Name
-    <li>Classification : @Model.Profile.Classification
-    <li>Designation : @Model.Profile.Designation
-    <li>Average Height : @Model.Profile.AverageHeight
-    <li>Skin Colors : @Model.Profile.SkinColors
-    <li>Hair Colors : @Model.Profile.HairColors
-    <li>Eye Colors : @Model.Profile.EyeColors
-    <li>Average Life Span : @Model.Profile.AverageLifeSpan
-    <li>Home World : @Model.Profile.HomeWorld
-    <li>Language : @Model.Profile.Language
-    <li>
-        <ol>
-            People :
-            @foreach (var character in Model.Profile.People)
-            {
-                <li>@character</li>
-            }
-        </ol>
-    </li>
-    <li>
-        <ol>
-            Films :
-            @foreach (var film in Model.Profile.Films)
-            {
-                <li>
-                    @film
-                </li>
-            }
-        </ol>
+<table class="table-borderless" id="profile">
+    <tr>
+        <td class="table-label">Name : </td>
+        <td class="table-data">@Model.Profile.Name</td>
+    </tr>
+    <tr>
+        <td class="table-label">Classification : </td>
+        <td class="table-data">@Model.Profile.Classification</td>
+    </tr>
+    <tr>
+        <td class="table-label">Designation : </td>
+        <td class="table-data">@Model.Profile.Designation</td>
+    </tr>
+    <tr>
+        <td class="table-label">Average Height : </td>
+        <td class="table-data">@Model.Profile.AverageHeight</td>
+    </tr>
+    <tr>
+        <td class="table-label">Skin Colors : </td>
+        <td class="table-data">@Model.Profile.SkinColors</td>
+    </tr>
+    <tr>
+        <td class="table-label">Hair Colors : </td>
+        <td class="table-data">@Model.Profile.HairColors</td>
+    </tr>
+    <tr>
+        <td class="table-label">Eye Colors : </td>
+        <td class="table-data">@Model.Profile.EyeColors</td>
+    </tr>
+    <tr>
+        <td class="table-label">Average Life Span : </td>
+        <td class="table-data">@Model.Profile.AverageLifeSpan</td>
+    </tr>
+    <tr>
+        <td class="table-label">Home World : </td>
+        <td class="table-data">@Model.Profile.HomeWorld</td>
+    </tr>
+    <tr>
+        <td class="table-label">Language : </td>
+        <td class="table-data">@Model.Profile.Language</td>
+    </tr>
 
-    </li>
-</ul>
+    @if (Model.Profile.People.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Characters : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var person in Model.Profile.People)
+                    {
+                        <li>@person</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+
+    @if (Model.Profile.Films.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Films : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach (var film in Model.Profile.Films)
+                    {
+                        <li>@film</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+
+
+
+</table>

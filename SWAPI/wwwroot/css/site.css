@@ -2,133 +2,176 @@
 for details on configuring this project to bundle and minify static web assets. */
 
 .site-title {
-    font-weight: bold;
     font-size: 3.5rem;
+    font-weight: bold;
 }
 
 a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
-}
-
-
-.navbar-container
-{
-    padding-right: 15px;
-    padding-left: 15px;
-    margin-right: auto;
-    margin-left: auto;
-}
-
-.navbar-container ul li{
     text-align: center;
-
+    white-space: normal;
+    word-break: break-all;
 }
+
+
+.navbar-container {
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 15px;
+    padding-right: 15px;
+}
+
+.navbar-container ul li { text-align: center; }
 
 /* Sticky footer styles
 -------------------------------------------------- */
-html {
-  font-size: 14px;
-}
+
+html { font-size: 14px; }
+
 @media (min-width: 768px) {
-  html {
-    font-size: 16px;
-  }
+    html { font-size: 16px; }
 }
 
-.border-top {
-  border-top: 1px solid #e5e5e5;
-}
-.border-bottom {
-  border-bottom: 1px solid #e5e5e5;
-}
+.border-top { border-top: 1px solid #e5e5e5; }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
+.border-bottom { border-bottom: 1px solid #e5e5e5; }
+
+.box-shadow { box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05); }
 
 button.accept-policy {
-  font-size: 1rem;
-  line-height: inherit;
+    font-size: 1rem;
+    line-height: inherit;
 }
 
 /* Sticky footer styles
 -------------------------------------------------- */
+
 html {
-  position: relative;
-  min-height: 100%;
+    min-height: 100%;
+    position: relative;
+}
+
+html ::-webkit-scrollbar {
+    width: 0px;
 }
 
 body {
+    background-color: black;
     /* Margin bottom by footer height */
     margin-bottom: 60px;
-    background-color: black;
+    
 }
 
 .footer {
-  position: absolute;
-  bottom: 0;
-  width: 100%;
-  white-space: nowrap;
-  /* Set the fixed height of the footer here */
-  height: 60px;
-  line-height: 60px; /* Vertically center the text there */
+    bottom: 0;
+    /* Set the fixed height of the footer here */
+    height: 30px;
+    line-height: 30px; /* Vertically center the text there */
+    position: absolute;
+    white-space: nowrap;
+    width: 100%;
+    position: fixed;
+    opacity: 100;
+    background-color: #ffffff;
 }
 
 .pb-3 {
-    text-align: center;
-    padding-top: 10px;
     background-color: lightgrey;
-    border: 5px solid black;
+    border: 4px solid black;
     border-radius: 20px;
+    box-shadow: 0 0 10px 3px #fff, /* inner white */
+    0 0 5px 5px #990000; /* middle magenta */
+    padding-top: 10px;
+    text-align: center;
+    margin-top: 80px;
 }
 
+.container h1 {
+     font-family: monospace !important;
+}
 
 .name {
+    background-color: aliceblue;
+    border: 2px solid black;
+    border-radius: 8px;
+    color: black;
+    display: inline-block;
     font-size: 12px;
     font-weight: bold;
-    display: inline-block;
-    width:225px;
     margin: 20px;
-    border: 2px solid black;
     padding: 10px;
-    border-radius: 8px;
     text-align: center;
-    background-color: aliceblue;
-    color: black;
+    width: 225px;
 }
 
-    .name:hover {
-        text-decoration: none;
-        color: blue;
-    }
+.name:hover {
+    color: blue;
+    text-decoration: none;
+}
 
 form button {
     background: transparent;
     border: none;
 }
 
- #profile {
-    list-style: none;
-    font-weight: bold;
-    display: inline-block;
-    width: 95%;
-    border: 3px solid black;
-    padding: 10px;
-    border-radius: 20px;
-    text-align: left;
+#profile {
     background-color: azure;
+    border: 3px solid black;
+    border-radius: 20px;
+    display: inline-block;
+    font-weight: bold;
+    list-style: none;
+    padding: 10px;
+    width: 60%;
 }
 
 #profile li {
-   font-size: 18px;
- list-style: none;
+    font-size: 16px;
+    list-style: none;
+    padding-bottom: 5px;
+}
+
+#crawlbox {
+    font-size: 12px;
+    max-height: 80px;
+    overflow: scroll;
+    overflow-x: hidden;
+    width: 90%;
+    background-color: lightgrey;
+    border-radius: 10px;
+    padding: 5px;
+    border: 2px black solid;
 }
 
 
-    #profile li ol li{
-        font-size: 14px;
-        padding-left: 10px;
-        list-style: none;
+div ::-webkit-scrollbar {
+        width: 12px ;
     }
+
+
+div ::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+}
+
+
+div ::-webkit-scrollbar-thumb {
+        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.5);
+        border-radius: 10px;
+    }
+
+.table-label {
+    text-align: right;
+    vertical-align: top;
+    font-family: monospace;
+    width: 25%;
+}
+
+.table-data {
+    text-align: left;
+    vertical-align: top;
+}
+
+ul {
+    padding: 0px;
+   
+}

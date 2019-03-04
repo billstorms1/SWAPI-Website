@@ -31,7 +31,8 @@ namespace SWAPI.Helpers
             request.Method = "GET";
             request.AutomaticDecompression = DecompressionMethods.Deflate | DecompressionMethods.GZip;
 
-            var content = string.Empty;
+            var content = string.Empty;  
+            //This needs to be wrapped in a try/catch with error handling
             using (var response = (HttpWebResponse) request.GetResponse())
             {
                 using (var stream = response.GetResponseStream())

@@ -6,47 +6,84 @@
 
 <h1>Character Profile</h1>
 
-<div class ="col-xs-12"></div>
-<ul id="profile">
-    <li>Name : @Model.Profile.Name
-    <li>Height : @Model.Profile.Height
-    <li>Mass : @Model.Profile.Mass
-    <li>Hair Color : @Model.Profile.HairColor
-    <li>Skin Color : @Model.Profile.SkinColor
-    <li>Eye Color : @Model.Profile.EyeColor
-    <li>Birth Year : @Model.Profile.BirthYear
-    <li>Gender : @Model.Profile.Gender
-    <li>Home World : @Model.Profile.HomeWorld
-    <li>
-        <ol>
-            Films :
-            @foreach (var film in Model.Profile.Films)
-            {
-                <li>
-                    @film
-                </li>
-            }
-        </ol>
+<table class="table-borderless" id="profile">
+    <tr>
+        <td class="table-label">Name : </td>
+        <td class="table-data">@Model.Profile.Name</td>
+    </tr>
+    <tr>
+        <td class="table-label">Height : </td>
+        <td class="table-data">@Model.Profile.Height</td>
+    </tr>
+    <tr>
+        <td class="table-label">Mass : </td>
+        <td class="table-data">@Model.Profile.Mass</td>
+    </tr>
+    <tr>
+        <td class="table-label">Hair Color : </td>
+        <td class="table-data">@Model.Profile.HairColor</td>
+    </tr>
+    <tr>
+        <td class="table-label">Skin Color : </td>
+        <td class="table-data">@Model.Profile.SkinColor</td>
+    </tr>
+    <tr>
+        <td class="table-label">Eye Color : </td>
+        <td class="table-data">@Model.Profile.EyeColor</td>
+    </tr>
+    <tr>
+        <td class="table-label">Birth Year : </td>
+        <td class="table-data">@Model.Profile.BirthYear</td>
+    </tr>
+    <tr>
+        <td class="table-label">Gender : </td>
+        <td class="table-data">@Model.Profile.HomeWorld</td>
+    </tr>
+    <tr>
+        <td class="table-label">Species : </td>
+        <td class="table-data">@Model.Profile.Species</td>
+    </tr>
+    @if (Model.Profile.Films.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Films : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach(var film in Model.Profile.Films)
+        {
+            <li>@film</li>
+        }
+                </ul>
+            </td>
+        </tr>
+    }
 
-    </li>
-    <li>Species : @Model.Profile.Species
-
-    <li>
-        <ol>
-            Vehicles :
-            @foreach (var vehicle in Model.Profile.Vehicles)
-            {
-                <li>@vehicle</li>
-            }
-        </ol>
-    </li>
-    <li>
-        <ol>
-            Star Ships :
-            @foreach (var ship in Model.Profile.StarShips)
-            {
-                <li>@ship</li>
-            }
-        </ol>
-    </li>
-</ul>
+    @if (Model.Profile.Vehicles.Count > 0)
+    {
+        <tr>
+            <td class="table-label">Vehicles : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach(var vehicle in Model.Profile.Vehicles)
+                    {
+                        <li>@vehicle</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+    @if (Model.Profile.StarShips.Count > 0)
+    {
+        <tr>
+            <td class="table-label">StarShips : </td>
+            <td class="table-data">
+                <ul>
+                    @foreach(var starShip in Model.Profile.StarShips)
+                    {
+                        <li>@starShip</li>
+                    }
+                </ul>
+            </td>
+        </tr>
+    }
+</table>
