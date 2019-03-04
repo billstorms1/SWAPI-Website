@@ -2,6 +2,7 @@
 using SWAPI.Helpers;
 using SWAPI.Models;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace SWAPI.Pages
 {
@@ -20,9 +21,10 @@ namespace SWAPI.Pages
 
         public void OnGet()
         {
+            List<string> names = new List<string>();
             Topic = "people";
             Results = MakeRequest.GetGeneralData(Topic);
-            Characters = ProcessRequest.CreateNameList(Results);
+            Characters = new List<NameModel>(ProcessRequest.CreateNameList(Results).OrderBy(n=>n.Name));
         }
     }
 }

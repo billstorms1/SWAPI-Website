@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Newtonsoft.Json.Linq;
 using SWAPI.Helpers;
 using SWAPI.Models;
@@ -22,7 +23,7 @@ namespace SWAPI.Pages
         {
             Topic = "starships";
             Results = MakeRequest.GetGeneralData(Topic);
-            StarShips = ProcessRequest.CreateNameList(Results);
+            StarShips = new List<NameModel>(ProcessRequest.CreateNameList(Results).OrderBy(n => n.Name));
         }
     }
 }
